@@ -45,18 +45,18 @@ view(emissions_df)
 #Country Cumulative Oil CO2 Emissions Bar Graph
 
 get_year_cumulative_oil_CO2 <- function() {
-  country_cumulative <- filter(CO2_df, year >= 2000, year <= 2022) %>%
+  cumulative_2000_2021 <- filter(CO2_df, year >= 2000, year <= 2022) %>%
     group_by(year) %>%
     filter(cumulative_oil_co2 != "NA") %>%
     summarize(cumulative_oil_co2 = sum(cumulative_oil_co2))
-  return(country_cumulative)   
+  return(cumulative_2000_2021)   
 }
 
 plot_year_cumulative_oil_CO2 <- function() {
   ggplot(get_year_cumulative_oil_CO2(), aes(x = year, y = cumulative_oil_co2)) +
   geom_col(mapping = aes(x = year, y = cumulative_oil_co2)) +
   labs(x = "Year", title = "Cumulative Oil CO2 Emissions By Year (2000-2021)") +
-  scale_y_continuous("Cumulative Oil CO2 Emissions (Million Tonnes)", labels = comma)
+  scale_y_continuous("Oil CO2 Emissions (Million Tonnes)", labels = comma)
 }
 
 plot_year_cumulative_oil_CO2()

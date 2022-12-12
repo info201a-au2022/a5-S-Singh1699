@@ -1,0 +1,14 @@
+name: CO2-Emissions
+title: CO2-Emissions
+username:
+account: s-singh1699
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7870428
+bundleId: 6624732
+url: https://s-singh1699.shinyapps.io/CO2-Emissions/
+when: 1670805981.91229
+lastSyncTime: 1670805981.9123
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Oil_well.jpg

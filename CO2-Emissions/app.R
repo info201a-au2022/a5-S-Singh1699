@@ -7,6 +7,8 @@ source("calculated_data.R")
 
 introPage <- tabPanel(
   "Introduction",
+  img(src = "https://imgs.search.brave.com/xITf1Fb_fTZsNtxuoz9Txqyv9g_qmfQAHiKglmftOzU/rs:fit:1200:1080:1/g:ce/aHR0cDovL2dldHdh/bGxwYXBlcnMuY29t/L3dhbGxwYXBlci9m/dWxsLzgvYi9lLzU1/MTYyMi5qcGc", width = 500, height = 250, align = "center", alt = "Oil Well"),
+  p(""),
   p("This website will be a brief yet important look into the emissions of our world.
      Most of us accept the existence of climate change and we all know our current production
      of oil/gas from fossil fuels are very damaging for our planet. This dataset that's being referenced
@@ -67,14 +69,20 @@ barPage <- tabPanel(
       helpText("Choose the country you want to see")
     ),
   mainPanel(
+    plotlyOutput("barChart_V2"),
+    p(""),
+    p("The bar graph above can be used to view a select countries cumulative oil produced CO2 emissions.
+      As we select the country, the visualization shows us the data over the span of 2000 to 2021.
+      We can see how as the years go up, the bars rise because emissions are not going down at all.
+      Each year no matter the country we choose to look at, all have increasing emission amounts.
+      "),
     plotlyOutput("barChart"),
     p(""),
-    p("The bar graph above shows us a look at the whole words cumulative CO2 emissions from each year.
+    p("This next bar graph shows us a look at the whole words cumulative CO2 emissions from each year.
       We've chosen to look at data from after 2000 because it is more relevant.
       But, we shouldn't mistake it as a new trend, this linear trend is apparent throughout the dataset because,
-      as society advances, so does our use of the planet and resources like fossi fuels.
+      as society advances, so does our use of the planet and resources like fossil fuels.
       "),
-    plotlyOutput("barChart_V2")
     )
   )
 )
@@ -82,6 +90,25 @@ barPage <- tabPanel(
 # Define UI for application
 ui <- fluidPage(
   "CO2 Emissions (1850-2021)",
+  tags$head(
+    # Wrapping of the string in HTML
+    tags$style(HTML("
+      @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+      body {
+        background-color: tan;
+        color: black;
+      }
+      p {
+        font-family: 'Courier New', monospace;
+      }
+      h4 {
+        font-family: 'Times New Roman', serif;
+        color: white;
+      }
+      .shiny-input-container {
+        color: #474747;
+      }"))
+  ),
   tabsetPanel(
     introPage,
     barPage,
